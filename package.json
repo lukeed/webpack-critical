@@ -16,5 +16,7 @@
     "index.js"
   ],
   "keywords": [],
-  "dependencies": {}
+  "dependencies": {
+    "critical": "^0.9.1"
+  }
 }
