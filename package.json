@@ -1,0 +1,20 @@
+{
+  "name": "webpack-critical",
+  "version": "0.0.0",
+  "description": "Extracts & inlines Critical CSS (above-the-fold) with Wepack",
+  "repository": "lukeed/webpack-critical",
+  "license": "MIT",
+  "author": {
+    "name": "Luke Edwards",
+    "email": "luke.edwards05@gmail.com",
+    "url": "lukeed.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [],
+  "dependencies": {}
+}
