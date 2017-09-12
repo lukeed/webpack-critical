@@ -18,6 +18,7 @@
   "keywords": [],
   "dependencies": {
     "filter-css": "^0.1.2",
+    "html-minifier": "^3.2.3",
     "inline-critical": "^2.4.2"
   },
   "peerDependencies": {
