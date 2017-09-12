@@ -1,6 +1,7 @@
 const join = require('path').join;
 const readFile = require('fs').readFile;
 const critical = require('inline-critical');
+const minifier = require('html-minifier').minify;
 const filterCSS = require('filter-css');
 
 const context = process.cwd();
@@ -13,12 +14,11 @@ class WebpackCritical {
 	}
 
 	generate(data, callback) {
-		console.log(data);
-		// this.opts.dest = data.outputName;
 		const file = join(this.opts.context, data.assets.css[0]);
-		readFile(file, 'utf8', (err, contents) => {
-			const css = filterCSS(contents, this.opts.ignore);
-			const html = critical(data.html, css, this.opts);
+		readFile(file, 'utf8', (err, buf) => {
+			const css = filterCSS(buf, this.opts.ignore);
+			const result = critical(data.html, css, this.opts);
+			const html = minifier(result, data.plugin.options.minify);
 			callback(null, { html });
 		});
 	}
