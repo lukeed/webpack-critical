@@ -1,7 +1,7 @@
 {
   "name": "webpack-critical",
   "version": "0.0.0",
-  "description": "Extracts & inlines Critical CSS (above-the-fold) with Wepack",
+  "description": "Extracts & inlines Critical CSS with Wepack",
   "repository": "lukeed/webpack-critical",
   "license": "MIT",
   "author": {
