@@ -18,7 +18,7 @@ class WebpackCritical {
 		readFile(file, 'utf8', (err, buf) => {
 			const css = filterCSS(buf, this.opts.ignore);
 			const result = critical(data.html, css, this.opts);
-			const html = minifier(result, data.plugin.options.minify);
+			const html = minifier(result.toString(), data.plugin.options.minify);
 			callback(null, { html });
 		});
 	}
