@@ -9,6 +9,8 @@
 $ npm install webpack-critical --save-dev
 ```
 
+> **Important:** You _must_ also install & configure [`html-webpack-plugin`](https://github.com/jantimon/html-webpack-plugin)!
+
 
 ## Usage
 

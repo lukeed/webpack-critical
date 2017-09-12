@@ -18,5 +18,8 @@
   "keywords": [],
   "dependencies": {
     "critical": "^0.9.1"
+  },
+  "peerDependencies": {
+    "html-webpack-plugin": "^2.29.0"
   }
 }
