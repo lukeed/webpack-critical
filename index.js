@@ -14,7 +14,7 @@ class WebpackCritical {
 	}
 
 	generate(data, callback) {
-		const file = join(this.opts.context, data.assets.css[0]);
+		const file = join(this.opts.context, this.opts.stylesheet || data.assets.css[0]);
 		readFile(file, 'utf8', (err, buf) => {
 			const css = filterCSS(buf, this.opts.ignore);
 			const result = critical(data.html, css, this.opts);
