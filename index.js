@@ -1,23 +1,25 @@
-const critical = require('critical');
+const join = require('path').join;
+const readFile = require('fs').readFile;
+const critical = require('inline-critical');
+const filterCSS = require('filter-css');
 
-const ignore = ['font-face', /@import/, /url\(/];
+const context = process.cwd();
+const ignore = ['@font-face', /import/, /url\(/];
 
 class WebpackCritical {
 	constructor(opts) {
 		this.generate = this.generate.bind(this);
-		this.opts = Object.assign({ minify:true, inline:true, ignore }, opts);
+		this.opts = Object.assign({ ignore, context }, opts);
 	}
 
 	generate(data, callback) {
 		console.log(data);
-		// hard-set option values
-		this.opts.html = data.html;
-		this.opts.dest = data.outputName;
-		this.opts.css = [`build/ssr-build${ data.assets.css[0] }`];
-
-		critical.generate(this.opts, (err, result) => {
-			data.html = result;
-			callback(null, data);
+		// this.opts.dest = data.outputName;
+		const file = join(this.opts.context, data.assets.css[0]);
+		readFile(file, 'utf8', (err, contents) => {
+			const css = filterCSS(contents, this.opts.ignore);
+			const html = critical(data.html, css, this.opts);
+			callback(null, { html });
 		});
 	}
 

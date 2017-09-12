@@ -17,7 +17,8 @@
   ],
   "keywords": [],
   "dependencies": {
-    "critical": "^0.9.1"
+    "filter-css": "^0.1.2",
+    "inline-critical": "^2.4.2"
   },
   "peerDependencies": {
     "html-webpack-plugin": "^2.29.0"
