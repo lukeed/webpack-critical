@@ -30,7 +30,7 @@ module.exports = {
   plugins: [
     new HTML({ ... })
     new WebpackCritical({
-      context: dist
+      context: dist,
       ignore: [/bootstrap/, '@font-face']
     })
   ]
