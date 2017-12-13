@@ -1,3 +1,4 @@
+const basename = require('path').basename;
 const minifier = require('html-minifier').minify;
 const critical = require('inline-critical');
 const filterCSS = require('filter-css');
@@ -15,7 +16,7 @@ class WebpackCritical {
 
 		compiler.plugin('compilation', bundle => {
 			bundle.plugin('html-webpack-plugin-after-html-processing', (data, cb) => {
-				const file = opts.stylesheet || data.assets.css[0].substring(1);
+				const file = opts.stylesheet || basename(data.assets.css[0]);
 				const source = bundle.assets[file].source();
 				const css = filterCSS(source, opts.ignore);
 				const result = critical(data.html, css, opts);
